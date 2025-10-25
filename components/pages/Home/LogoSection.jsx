@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-export const LogoSection = () => {
+ const LogoSection = () => {
   const logoRef = useRef(null);
 
   useEffect(() => {
@@ -36,3 +36,4 @@ export const LogoSection = () => {
     </div>
   );
 };
+export default LogoSection
