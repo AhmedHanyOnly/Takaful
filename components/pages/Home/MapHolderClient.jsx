@@ -76,7 +76,7 @@ export default function MapHolderClient() {
         }}
       >
         {/* عنوان */}
-        <div className="absolute top-6 left-1/2 -translate-x-1/2 z-[500] bg-white/90 backdrop-blur-md px-8 py-3 rounded-full shadow-lg text-xl font-semibold text-[#c32126] flex items-center gap-2">
+        <div className="absolute text-[8px] top-6 left-1/2 -translate-x-1/2 z-[500] bg-white/90 backdrop-blur-md px-8 py-3 rounded-full shadow-lg md:text-xl font-semibold text-[#c32126] flex items-center gap-2">
           <i className="fa-solid fa-location-dot text-[#c32126]"></i>
           مواقع فروعنا في مصر
         </div>
@@ -86,12 +86,7 @@ export default function MapHolderClient() {
           center={[30.0444, 31.2357]}
           zoom={6.5}
           scrollWheelZoom={true}
-          style={{
-            height: "550px",
-            width: "100%",
-            borderRadius: "2rem",
-            zIndex: 10,
-          }}
+          className="h-[350px] md:h-[550px] w-full rounded-[2rem] z-10"
         >
           <AnimateMap />
 
@@ -115,11 +110,11 @@ export default function MapHolderClient() {
         </MapContainer>
 
         {/* ظل متدرج أسفل الكارت */}
-        <div className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-[#c32126]/40 to-transparent pointer-events-none"></div>
+        <div className="absolute hidden md:block bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-[#c32126]/40 to-transparent pointer-events-none"></div>
 
         {/* أشكال جانبية متحركة */}
-        <div className="absolute top-0 left-[-50px] w-28 h-28 bg-[#c32126]/60 rounded-lg decor-shape pointer-events-none"></div>
-        <div className="absolute bottom-[-50px] right-[-50px] w-28 h-28 bg-[#c32126]/50 rounded-full decor-shape pointer-events-none"></div>
+        <div className="absolute hidden md:block top-0 left-[-50px] w-28 h-28 bg-[#c32126]/60 rounded-lg decor-shape pointer-events-none"></div>
+        <div className="absolute hidden md:block bottom-[-50px] right-[-50px] w-28 h-28 bg-[#c32126]/50 rounded-full decor-shape pointer-events-none"></div>
       </div>
     </div>
   );
