@@ -95,12 +95,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
           </div>
 
           {/* نموذج الاتصال */}
-          <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
+          <div   ref={formRef}  className="w-full  px-4 lg:w-1/2 xl:w-5/12">
             <div
-              ref={formRef}
+            
               className="relative rounded-lg bg-white p-8 shadow-lg z-auto sm:p-12 z-20"
             >
-              <form>
+              <form >
                 <div className="mb-6">
                   <input
                     type="text"
