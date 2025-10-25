@@ -2,7 +2,7 @@ import { Outfit, Cairo } from 'next/font/google';
 import './globals.css';
 
 import { Toaster } from 'sonner';
-import ProtectedRoute from '../middleware/ProtectedRoute';
+// import ProtectedRoute from '../middleware/ProtectedRoute';
 import QueryProvider from '../components/QueryProvider';
 import AppHeader from '../layout/AppHeader';
 import AppFooter from '../layout/AppFooter';
@@ -20,14 +20,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ar" dir='rtl'>
       <body className={`${outfit.className} ${cairo.className} `}>
-        <ProtectedRoute>
+        {/* <ProtectedRoute> */}
             <QueryProvider>
                 <Toaster position="top-right" richColors />
                 <AppHeader/>
                 {children}
                 <AppFooter/>
             </QueryProvider>
-        </ProtectedRoute>
+        {/* </ProtectedRoute> */}
       </body>
     </html>
   );
