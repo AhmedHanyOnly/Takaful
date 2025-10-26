@@ -85,7 +85,7 @@ const AppHeader = () => {
 
         {/* قائمة سطح المكتب */}
         <nav className="hidden md:flex">
-          <ul className="flex items-center gap-8 font-medium transition-colors duration-500">
+          <ul className="flex items-center gap-8 font-medium text-xl transition-colors duration-500">
             {navLinks.map((link, index) => (
               <li
                 key={index}
@@ -119,10 +119,10 @@ const AppHeader = () => {
           {navLinks.map((link, index) => (
             <li
               key={index}
-              className="hover:text-[var(--color-primary)] transition-colors cursor-pointer"
+              className="hover:text-[var(--color-primary)]  transition-colors cursor-pointer"
               onClick={() => setMobileOpen(false)}
             >
-              <Link href={link.href}>{link.name}</Link>
+              <Link className="text-black" href={link.href}>{link.name}</Link>
             </li>
           ))}
         </ul>

@@ -4,12 +4,14 @@ import React, { useEffect, useRef } from "react";
 import { FiHome, FiMail, FiPhoneCall } from "react-icons/fi";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
- const Contact = () => {
+gsap.registerPlugin(ScrollTrigger);
+const Contact = () => {
   const cardsRef = useRef([]);
   const formRef = useRef(null);
   useEffect(() => {
     // Animation for info cards
     cardsRef.current.forEach((el, idx) => {
+      if (!el) return;
       gsap.from(el, {
         y: 50,
         opacity: 0,
@@ -26,7 +28,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
     // Animation for form
     if (formRef.current) {
       gsap.from(formRef.current, {
-        x: -100, // يبدأ من اليسار
+        x: -100,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
@@ -95,12 +97,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
           </div>
 
           {/* نموذج الاتصال */}
-          <div   ref={formRef}  className="w-full  px-4 lg:w-1/2 xl:w-5/12">
-            <div
-            
-              className="relative rounded-lg bg-white p-8 shadow-lg z-auto sm:p-12 z-20"
-            >
-              <form >
+          <div ref={formRef} className="w-full  px-4 lg:w-1/2 xl:w-5/12">
+            <div className="relative rounded-lg bg-white p-8 shadow-lg z-auto sm:p-12 z-20">
+              <form>
                 <div className="mb-6">
                   <input
                     type="text"
@@ -953,4 +952,4 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
     </section>
   );
 };
-export default Contact
+export default Contact;

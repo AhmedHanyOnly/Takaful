@@ -11,19 +11,19 @@ const sliders = [
     img: "/landing/sliders/slider-1.jpg",
     title: "خصم 50% على الإلكترونيات",
     subtitle: "احصل على كوبون خصم من متجر الإلكترونيات الآن",
-    link: "احصل على الكوبون",
+    // link: "احصل على الكوبون",
   },
   {
     img: "/landing/sliders/slider-2.jpg",
     title: "عروض الموضة الصيفية",
     subtitle: "خصومات خاصة على ملابس الصيف من أشهر الماركات",
-    link: "استفد بالعرض",
+    // link: "استفد بالعرض",
   },
   {
     img: "/landing/sliders/slider-3.jpg",
     title: "خصم حصري للموقع",
     subtitle: "استمتع بخصومات على المنتجات عند التسوق عبر موقعنا",
-    link: "اكتشف العروض",
+    // link: "اكتشف العروض",
   },
 ];
 
@@ -63,7 +63,7 @@ export default function SliderLanding() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-[80vh] overflow-hidden bg-black"
+      className="relative w-full h-[100vh] overflow-hidden bg-black"
     >
       {sliders.map((slide, index) => (
         <div
@@ -86,12 +86,14 @@ export default function SliderLanding() {
             <h2 className="text-5xl font-bold uppercase tracking-wide slide-content">
               {slide.title}
             </h2>
-            <a
-              href="#"
-              className="mt-4 px-6 py-2 border border-white text-white hover:bg-white hover:text-black transition slide-content"
-            >
-              {slide.link}
-            </a>
+            {slide.link && (
+              <a
+                href="#"
+                className="mt-4 px-6 py-2 border border-white text-white hover:bg-white hover:text-black transition slide-content"
+              >
+                {slide.link}
+              </a>
+            )}
           </div>
         </div>
       ))}
