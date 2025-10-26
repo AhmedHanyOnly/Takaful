@@ -40,6 +40,8 @@ const AppHeader = () => {
 
   // انيميشن الموبايل
   useEffect(() => {
+    if (!mobileMenuRef.current) return;
+
     if (mobileOpen) {
       gsap.fromTo(
         mobileMenuRef.current,
@@ -62,9 +64,7 @@ const AppHeader = () => {
   }, [mobileOpen]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -72,15 +72,15 @@ const AppHeader = () => {
   return (
     <header
       ref={headerRef}
-      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-500 z-[9999] ${
-        scrolled
-          ? "bg-white [var(--color-primary)] shadow-md"
-          : "bg-transparent text-white"
+      className={`fixed top-0 left-0 w-full z-[9999] transition-colors duration-500 ${
+        scrolled ? "bg-white text-black shadow-md" : "bg-transparent text-white"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         <div className="text-2xl font-bold cursor-pointer transition-colors duration-500">
-          <Image src={'/logo.jpg'} alt="logo" width={100} height={100} />
+          <Link href="/">
+            <Image src="/logo.jpg" alt="logo" width={100} height={100} />
+          </Link>
         </div>
 
         {/* قائمة سطح المكتب */}
@@ -117,12 +117,14 @@ const AppHeader = () => {
       >
         <ul className="flex flex-col gap-4 py-4 px-6 font-medium">
           {navLinks.map((link, index) => (
-            <li
-              key={index}
-              className="hover:text-[var(--color-primary)]  transition-colors cursor-pointer"
-              onClick={() => setMobileOpen(false)}
-            >
-              <Link className="text-black" href={link.href}>{link.name}</Link>
+            <li key={index} className="hover:text-[var(--color-primary)] transition-colors">
+              <Link
+                href={link.href}
+                className="text-black"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.name}
+              </Link>
             </li>
           ))}
         </ul>
