@@ -7,15 +7,29 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 export default function SmoothScroll({ children }) {
   useEffect(() => {
     if (typeof window === "undefined") return;
+
     gsap.registerPlugin(ScrollSmoother);
 
-    if (!ScrollSmoother.get()) {
-      ScrollSmoother.create({
-        smooth: 1.2, 
+    let smoother;
+
+    const initSmoother = () => {
+      const existing = ScrollSmoother.get();
+      if (existing) existing.kill();
+
+      smoother = ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 1.2,
         effects: true,
         smoothTouch: 0.1,
       });
-    }
+    };
+
+    setTimeout(initSmoother, 0);
+
+    return () => {
+      if (smoother) smoother.kill();
+    };
   }, []);
 
   return (
