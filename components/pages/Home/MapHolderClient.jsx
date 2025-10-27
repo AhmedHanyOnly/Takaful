@@ -36,7 +36,7 @@ function AnimateMap() {
   return null;
 }
 
-export default function MapHolderClient() {
+export default function MapHolderClient({textMap = 'مواقع فروعنا في مصر'}) {
   useEffect(() => {
     // أنميشن الماركرات
     gsap.fromTo(
@@ -78,7 +78,7 @@ export default function MapHolderClient() {
         {/* عنوان */}
         <div className="absolute text-[8px] top-6 left-1/2 -translate-x-1/2 z-[500] bg-white/90 backdrop-blur-md px-8 py-3 rounded-full shadow-lg md:text-xl font-semibold text-[#c32126] flex items-center gap-2">
           <i className="fa-solid fa-location-dot text-[#c32126]"></i>
-          مواقع فروعنا في مصر
+          {textMap}
         </div>
 
         {/* الخريطة */}
